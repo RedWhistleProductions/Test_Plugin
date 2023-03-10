@@ -1,0 +1,6 @@
+compile a .so
+	g++ -c -Wall -Werror -fpic *
+	g++ -shared -o lib.so lib.o
+
+compile regular program 
+	g++ -o main main.cpp -ldl
