@@ -13,15 +13,32 @@ void Plugin::Load(std::string Name)
         fputs (dlerror(), stderr);
         exit(1);
     }
+}
 
-    *(void **)(&hello) = dlsym(handle, "hello");
-    if ((error = dlerror()) != NULL)  {
+void Plugin::Get_Function(std::string Key)
+{
+    //Gets Function from dll and loads it into the Function List
+    Function_List.AddNode(Key);
+
+    Function_List.Current->Value = dlsym(handle, Key.c_str());
+    if ((error = dlerror()) != NULL)  
+    {
         fputs(error, stderr);
         exit(1);
     }
-
-    hello();
 }
+
+void Plugin::Call(std::string Key)
+{
+    //Call a function from Function List
+    void (*a)();
+    if(Function_List.Find(Key))
+    {
+        *(void **)(&a) = Function_List.Current->Value;
+        a();
+    }
+    
+}       
 
 Plugin::~Plugin()
 {
