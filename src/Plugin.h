@@ -12,6 +12,7 @@ private:
 public:
     NamedList<void *> Function_List;
     Plugin(/* args */);
+    Plugin(std::string);
     void Load(std::string Name);
     void Get_Function(std::string Key);
     void Call(std::string Key);

@@ -1,12 +1,8 @@
-#include "Plugin.h"
+#include "Module.h"
 
 int main()
 {
-    Plugin Test;
-    Test.Load("lib");
-    Test.Get_Function("Test");
-    Test.Call("Test");
-    Test.Get_Function("Hello_World");
-    Test.Call("Hello_World");
+    Module Test("Test.Appeal", "lib");
+    Test.Plug.Call("Test");
     return 0;
 }

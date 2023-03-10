@@ -1,9 +1,8 @@
 #include "Plugin.h"
 
-Plugin::Plugin(/* args */)
-{
+Plugin::Plugin(/* args */){}
 
-}
+Plugin::Plugin(std::string Name){Load(Name);}
 
 void Plugin::Load(std::string Name)
 {
