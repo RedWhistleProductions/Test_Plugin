@@ -76,8 +76,6 @@ public:
 
     Node *Start;//The first Node for circular linking
     Node *Current;//The Current Node to be used
-
-
 };
 #endif
 
@@ -97,10 +95,12 @@ template < class T >NamedList<T>::NamedList(void)
 template < class T >void NamedList<T>::Display()
 {
 	GoTo(1);
-	for(int i = 0; i<= Nodes; i++){
+	for(int i = 0; i< Nodes; i++)
+    {
 		std::cout << CurrentName << std::endl;
 		Next();
-	}
+    }
+
 }
 
 template < class T >bool NamedList<T>::Find(std::string Name)
@@ -427,5 +427,7 @@ template <class T>T* NamedList<T>::operator[](std::string Name){
 	Find(Name);
 	return &Current->Value;
 }
+
+
 
 #endif // NAMEDLIST_H

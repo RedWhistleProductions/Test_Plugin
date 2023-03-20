@@ -27,18 +27,6 @@ void Plugin::Get_Function(std::string Key)
     }
 }
 
-void Plugin::Call(std::string Key)
-{
-    //Call a function from Function List
-    void (*a)();
-    if(Function_List.Find(Key))
-    {
-        *(void **)(&a) = Function_List.Current->Value;
-        a();
-    }
-    
-}       
-
 Plugin::~Plugin()
 {
     dlclose(handle);

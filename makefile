@@ -1,6 +1,6 @@
 # Makefile for building main executable and lib.so shared library
 
-BIN_FILE := main
+BIN_FILE := app
 BIN_OBJ_DIR := ./src/obj
 BIN_RELEASE_DIR := ./Release
 

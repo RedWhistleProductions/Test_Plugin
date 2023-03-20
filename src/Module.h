@@ -19,6 +19,7 @@ public:
     Plugin Plug;
     void Set_Config(std::string Config);
     void Set_Plugin(std::string Plugin_Name);
-    
+    void Reserved_List();
+    void* Assign(std::string Key);
 };
 

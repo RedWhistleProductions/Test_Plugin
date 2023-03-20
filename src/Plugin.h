@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <dlfcn.h>
@@ -15,7 +17,6 @@ public:
     Plugin(std::string);
     void Load(std::string Name);
     void Get_Function(std::string Key);
-    void Call(std::string Key);
+
     ~Plugin();
 };
-

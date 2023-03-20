@@ -37,3 +37,14 @@ Module::Module(std::string Config, std::string Plugin_Name)
 Module::~Module()
 {
 }
+
+void Module::Reserved_List()
+{
+    Plug.Function_List.Display();
+}
+
+void* Module::Assign(std::string Key)
+{
+    Plug.Function_List.Find(Key);
+    return Plug.Function_List.Current->Value;
+}
