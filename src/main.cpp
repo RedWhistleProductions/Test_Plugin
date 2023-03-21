@@ -1,17 +1,20 @@
-#include "Module_Manager.h"
-#include "Test_Module.h"
+#include <iostream>
+#include "Plugin.h"
+#include "Test_Plugin.h"
 
-Module Test_Module;
+Plugin Test_Plugin;
+
 
 int main()
-{ 
-    Test_Module.Set_Config("Test");
-    Test_Module.Set_Plugin("lib");
+{   
+    Test_Plugin.Load("lib");
     Test::Init();
+    
     Test::Test();
+    
     Test::Hello_World();
     if(Test::Test_2()){std::cout << "Test 2 Success!"<< std::endl;}
     std::cout << Test::Add(5, 5) << std::endl;
-    
+
     return 0;
 }

@@ -9,7 +9,7 @@ LIB_OBJ_DIR := ./lib/obj
 LIB_RELEASE_DIR := ./Release
 
 CC := g++
-CFLAGS := -Wall -Werror -fpic
+CFLAGS := -Wall -fpic
 LDFLAGS := -ldl
 
 .PHONY: all clean release
