@@ -1,23 +1,16 @@
 # Makefile for building main executable and lib.so shared library
 
-BIN_FILE := app.exe
+BIN_FILE := app
 BIN_OBJ_DIR := ./src/obj
 BIN_RELEASE_DIR := ./Release
 
-LIB_FILE := lib.dll
+LIB_FILE := lib.so
 LIB_OBJ_DIR := ./lib/obj
 LIB_RELEASE_DIR := ./Release
 
 CC := g++
 CFLAGS := -Wall -fpic -std=c++14
-LDFLAGS := 
-
-ifeq ($(shell uname), Linux)
-	BIN_FILE := app
-	LIB_FILE := lib.so
-	CFLAGS += -D LINUX
-	LDFLAGS += -ldl -Wl,-rpath='$$ORIGIN'
-endif
+LDFLAGS := -ldl
 
 .PHONY: all clean release
 
@@ -26,7 +19,7 @@ all: $(LIB_FILE) $(BIN_FILE)
 $(LIB_FILE): $(wildcard ./lib/*.cpp)
 	$(CC) $(CFLAGS) -c $^
 	mv *.o $(LIB_OBJ_DIR)
-	$(CC) -shared -o ./Debug/$@ $(LIB_OBJ_DIR)/*.o $(LDFLAGS)
+	$(CC) -shared -o ./Debug/$@ $(LIB_OBJ_DIR)/*.o
 
 $(BIN_FILE): $(wildcard ./src/*.cpp)
 	$(CC) $(CFLAGS) -c $^
