@@ -18,12 +18,13 @@ public:
 
     void Load(std::string Name);
     template<typename T>void Assign(std::string Key, T &func);
-
+    void* Get_Function(std::string Key);
     ~Plugin();
 };
 
 void Plugin::Load(std::string Name)
 {
+    if(handle != nullptr) dlclose(handle);
     std::string Lib = "./" + Name + ".so";
     handle = dlopen (Lib.c_str(), RTLD_LAZY);
 	if (!handle) {
@@ -46,6 +47,17 @@ template<typename T>void Plugin::Assign(std::string Key, T &func)
     func = reinterpret_cast<decltype(func)>(Value);
 }
 
+void* Plugin::Get_Function(std::string Key)
+{
+    void *Value = dlsym(handle, Key.c_str());
+    if ((error = dlerror()) != NULL)  
+    {
+        fputs(error, stderr);
+        exit(1);
+    } 
+    
+    return Value;
+}
 
 Plugin::~Plugin()
 {
@@ -75,6 +87,7 @@ class Plugin
 
 void Plugin::Load(std::string Name)
 {
+    if(handle != nullptr) FreeLibrary(handle);
     std::string Lib = Name + ".dll";
     handle = LoadLibrary(Lib.c_str());
     if (!handle)

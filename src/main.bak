@@ -1,0 +1,25 @@
+#include "Appeal.h"
+
+int main()
+{   
+    
+    Appeal App;
+    App.Load("lib");
+    App.Add_Function("Test", "VV");
+    App.Add_Function("Hello_World", "VV");
+    App.Add_Function("Add", "III");
+    App.Add_Function("Test_2", "BV");
+
+    App.Call("Test");
+    App.Call("Hello_World");
+    //App.Call("Add");
+    //App.Call("Test_2");
+/*   
+extern "C" void Test() 
+extern "C" void Hello_World() 
+extern "C" int Add(int x, int y)
+extern "C" bool Test_2()
+*/    
+    
+    return 0;
+}

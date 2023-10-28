@@ -18,7 +18,6 @@ extern "C" int Add(int x, int y)
 
 extern "C" bool Test_2()
 {
-
-
+    std::cout << "Test_2" << std::endl;
     return 0;
 }
